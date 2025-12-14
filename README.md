@@ -73,7 +73,7 @@ Optionally you can use alternate build configurations using multiple "data" dire
 By default the directory **"./data"** is used.
 Optionally you can changed this to **"./data-'BUILDENV'"** by defining the **BUILDENV** setting in the config.build file.
 
-## Note for building using the Windows command prompt (buuild_APK.cmd)
+## Note for building using the Windows command prompt (build_APK.cmd)
 
 Functionality will be limited:
 
