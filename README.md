@@ -231,7 +231,7 @@ To build on Linux (using defaults from _config.build_) run the following command
 **You will find the build output in the location __data__/output**
 **You will find the published output in the location __data__/builds**
 
-## Automating builds with Cron (Linux/WSL)
+#### Automating builds with Cron (Linux/WSL)
 
 You can automate your builds and publishing using a cron job. The `build_APK.sh` script automatically detects if it is running unattended and adjusts the Docker parameters for background execution.
 
