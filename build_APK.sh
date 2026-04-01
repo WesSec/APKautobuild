@@ -35,12 +35,19 @@ case "$1" in
       ;;
 esac
 
-# Run container in interactive mode
+# Check if running in a terminal (TTY) to prevent cron errors
+if [ -t 1 ]; then
+  DOCKER_TTY="-it"
+else
+  DOCKER_TTY="-i"
+fi
+
+# Run container in interactive/non-interactive mode automatically
 cmd="docker run $docker_runparams --rm --name AAPSbuilder \
 --mount source=volAAPSgradle,target=/root/.gradle \
 --mount source=volAAPSgit,target=/user/src/asbuilder/AndroidAPS \
 --mount type=bind,source=$data_local,target=$data_mount \
--it $image $1"
+$DOCKER_TTY $image $1"
 
 echo $cmd
 eval $cmd
