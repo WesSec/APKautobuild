@@ -231,6 +231,18 @@ To build on Linux (using defaults from _config.build_) run the following command
 **You will find the build output in the location __data__/output**
 **You will find the published output in the location __data__/builds**
 
+## Automating builds with Cron (Linux/WSL)
+
+You can automate your builds and publishing using a cron job. The `build_APK.sh` script automatically detects if it is running unattended and adjusts the Docker parameters for background execution.
+
+To schedule an automatic daily build (for example, every Monday at 01:00), open your crontab editor:
+
+    crontab -e
+
+Add the following line, making sure to use the **absolute path** to your clone directory to prevent environment issues:
+
+    0 1 * * 1 cd /home/<yourUser>/APKautobuild && { ./build_APK.sh --clean && ./publish.sh; } >> /home/<yourUser>/APKautobuild/data/builds/cron_log.log 2>&1
+
 ## Windows 10/11
 
 To build on Windows run the command batch file:
@@ -271,6 +283,9 @@ Place the patchfiles in the data/patches direcory. Then add the patch file name 
     export GIT_PATCHES=mypatch.patch, /V3-dev/otherpatch.patch
 
 # CHANGES
+
+0260401
+    * Added background execution support for cron jobs in build_APK.sh
 
 20250418
     * Image version 1.3.8
